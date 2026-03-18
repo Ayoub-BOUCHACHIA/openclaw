@@ -39,6 +39,9 @@ Once running, the application is accessible on your host machine at:
 > [!NOTE]
 > This setup uses `network_mode: host` to bypass container networking limitations. Authentication is disabled by default for easier local development.
 
+> [!CAUTION]
+> **Security Warning:** The current `docker-compose.yml` includes `NODE_TLS_REJECT_UNAUTHORIZED: "0"`. This bypasses SSL certificate verification to resolve connectivity issues in some restricted environments. **This is insecure and should be removed for production use.**
+
 ## Makefile Commands
 
 - `make run`: Start the container in detached mode.
