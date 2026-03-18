@@ -34,9 +34,10 @@ We provide pre-optimized templates for different use cases. To use one, copy it 
 
 | Profile | File | Description |
 |---------|------|-------------|
-| **Dev / Debug** | `openclaw.json.kimi-dev.template` | Full power, native command execution enabled. |
-| **Chat Assistant** | `openclaw.json.kimi-chat.template` | Safe, general-purpose chat focus. |
-| **Browser Runner** | `openclaw.json.kimi-browser.template` | Optimized for web research and automation. |
+| **Dev / Debug** | `openclaw.json.kimi-dev.template` | Full power, native command execution enabled (Kimi). |
+| **Chat Assistant** | `openclaw.json.kimi-chat.template` | Safe, general-purpose chat focus (Kimi). |
+| **Browser Runner** | `openclaw.json.kimi-browser.template` | Optimized for web research (Kimi). |
+| **OpenRouter** | `openclaw.json.openrouter.template` | Multi-model support via OpenRouter (Gemini, etc.). |
 
 ---
 

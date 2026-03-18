@@ -1,0 +1,25 @@
+{
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "gateway": {
+    "bind": "loopback",
+    "auth": {
+      "mode": "none"
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openrouter/google/gemini-2.0-flash-001"
+      }
+    }
+  },
+  "meta": {
+    "profile": "openrouter",
+    "description": "Multi-model profile using OpenRouter. Default: Gemini 2.0 Flash."
+  }
+}
