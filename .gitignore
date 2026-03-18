@@ -1,0 +1,10 @@
+# Local data and secrets
+openclaw_data/
+.env
+
+# Docker logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db

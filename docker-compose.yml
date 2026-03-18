@@ -1,0 +1,13 @@
+services:
+  openclaw:
+    image: ghcr.io/openclaw/openclaw:latest
+    container_name: openclaw
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      MOONSHOT_API_KEY: "your-moonshot-api-key-here"
+      OPENCLAW_BYPASS_AUTH: "true"   # Set to "true" if you don't want token auth
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"
+    
+    volumes:
+      - ./openclaw_data:/home/node/.openclaw
