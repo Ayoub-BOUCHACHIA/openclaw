@@ -1,60 +1,88 @@
-# OpenClaw Docker Setup
+# OpenClaw Docker Setup 🚀
 
-This repository contains a pre-configured OpenClaw setup ready for development. It features host networking for easy access and optimized configuration for Moonshot AI (Kimi).
+Optimized Docker deployment for [OpenClaw](https://github.com/openclaw/gateway-server) with Moonshot AI (Kimi) support. Ideal for local development, web automation, and remote-safe access.
 
-## Prerequisites
+---
 
-- Docker and Docker Compose
-- A Moonshot AI API Key (or other supported provider)
+## 🏗️ Architecture & Services
 
-## Quick Start
+OpenClaw operates with several key services exposed on your host:
 
-1. **Clone the repository:**
+- **Dashboard / Control UI (Port 18789)**: The main interface for chat and agent management.
+- **CDP Relay / Browser Control (Port 18791)**: The interface for agents to pilot the underlying browser.
+- **Gateway (WebSocket)**: Handles core agent communication and skill execution.
+
+---
+
+## 🚀 Quick Start
+
+1. **Clone & Setup:**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/Ayoub-BOUCHACHIA/openclaw
    cd openclaw
-   ```
-
-2. **Set up your environment:**
-   Run the setup command to create your `.env` file from the template:
-   ```bash
    make setup
    ```
-   Open the `.env` file and provide your `MOONSHOT_API_KEY`.
+2. **Configure:** Edit `.env` and add your `MOONSHOT_API_KEY`.
+3. **Run:** `make run`
+4. **Access:** [http://localhost:18789](http://localhost:18789)
 
-3. **Start the application:**
-   Using the provided `Makefile`:
-   ```bash
-   make run
-   ```
-   Or using Docker Compose:
-   ```bash
-   docker compose up -d
-   ```
+---
 
-## Connectivity & Access
+## 🛠️ Specialized Configuration Profiles
 
-Once running, the application is accessible on your host machine at:
+We provide pre-optimized templates for different use cases. To use one, copy it to `openclaw_data/openclaw.json`:
 
-- **Dashboard (Control UI):** [http://localhost:18789](http://localhost:18789)
-- **Browser Control (CDP Relay):** `http://localhost:18791`
-- **Gateway (WebSocket):** `ws://localhost:18789`
+| Profile | File | Description |
+|---------|------|-------------|
+| **Dev / Debug** | `openclaw.json.kimi-dev.template` | Full power, native command execution enabled. |
+| **Chat Assistant** | `openclaw.json.kimi-chat.template` | Safe, general-purpose chat focus. |
+| **Browser Runner** | `openclaw.json.kimi-browser.template` | Optimized for web research and automation. |
 
-> [!NOTE]
-> This setup uses `network_mode: host` to bypass container networking limitations. Authentication is disabled by default for easier local development.
+---
+
+## 💡 Use Cases
+
+### 1. General-Purpose Assistant (Kimi k2.5)
+- **Goal**: A fast, reliable personal chat assistant.
+- **Steps**: Lancer `make run`, copier `kimi-chat` template, and start chatting.
+- **Try it**: "Aide-moi à organiser ma journée" or "Explique-moi la relativité".
+
+### 2. Automated Web Research Agent
+- **Goal**: An agent that browses the web to find specific information.
+- **Steps**: Lancer `make run`, copier `kimi-browser` template.
+- **Try it**: "Trouve les 5 derniers articles sur l'IA générative et fais-moi un résumé".
+
+---
+
+## 🛡️ Security: Dev vs Production
+
+| Feature | Development (Host Mode) | Production (Remote/Safe) |
+|---------|-------------------------|--------------------------|
+| **Deployment** | `make run` | `make run-remote` |
+| **Network** | `network_mode: host` | `bridge` |
+| **SSL** | Insecure (Bypassed) | **Secure (Mandatory)** |
+| **Auth** | Bypassed | **Enabled** |
 
 > [!CAUTION]
-> **Security Warning:** The current `docker-compose.yml` includes `NODE_TLS_REJECT_UNAUTHORIZED: "0"`. This bypasses SSL certificate verification to resolve connectivity issues in some restricted environments. **This is insecure and should be removed for production use.**
+> **Safety First**: Never expose port 18789 directly to the internet. We recommend using a **Cloudflare Tunnel** or **Localtonet** for secure remote access.
 
-## Makefile Commands
+---
 
-- `make run`: Start the container in detached mode.
-- `make stop`: Stop and remove the container.
-- `make restart`: Restart the container.
-- `make logs`: View container logs.
-- `make clean`: remove the local data volume (CAUTION: deletes all sessions/configs).
+## ⌨️ Makefile Shortcuts
 
-## Configuration
+- `make setup`: Initialize environment and data folders.
+- `make run`: Run in development (host) mode.
+- `make run-remote`: Run in bridge (port-mapping) mode.
+- `make shell`: Open a bash shell inside the container.
+- `make backup`: Create a timestamped backup of your data.
+- `make update`: Pull latest images and restart.
 
-The core configuration is stored in `openclaw_data/openclaw.json`. 
-A template is provided in `openclaw.json.template`.
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md) for more details.
+
+---
+
+_Created with ❤️ for the OpenClaw community._

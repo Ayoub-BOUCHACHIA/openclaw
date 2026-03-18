@@ -1,0 +1,25 @@
+{
+  "commands": {
+    "native": "off",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "minimal"
+  },
+  "gateway": {
+    "bind": "loopback",
+    "auth": {
+      "mode": "none"
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "moonshot/kimi-k2.5"
+      }
+    }
+  },
+  "meta": {
+    "profile": "kimi-browser",
+    "description": "Browser-centric profile. Optimized for web research and automation."
+  }
+}

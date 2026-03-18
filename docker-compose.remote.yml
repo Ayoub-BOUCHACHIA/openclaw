@@ -1,0 +1,23 @@
+services:
+  openclaw:
+    image: ghcr.io/openclaw/gateway-server:latest
+    container_name: openclaw-remote
+    restart: unless-stopped
+    # Bridge mode for explicitly controlled ports
+    ports:
+      - "18789:18789" # Gateway & Dashboard
+      - "18791:18791" # Browser Control
+    environment:
+      MOONSHOT_API_KEY: ${MOONSHOT_API_KEY}
+      OPENCLAW_BYPASS_AUTH: "false" # AUTH MANDATORY FOR REMOTE ACCESS
+      OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}
+      # NODE_TLS_REJECT_UNAUTHORIZED: "0" # NOT RECOMMENDED FOR REMOTE
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:18791"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    
+    volumes:
+      - ./openclaw_data:/home/node/.openclaw

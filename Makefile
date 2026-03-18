@@ -38,3 +38,16 @@ update:
 
 logs-live:
 	docker compose logs -f --tail 100
+
+shell:
+	docker compose exec openclaw bash
+
+backup:
+	@echo "Creating backup of openclaw_data..."
+	@TIMESTAMP=$$(date +%Y%m%d_%H%M%S); \
+	tar -czf backup_openclaw_data_$$TIMESTAMP.tar.gz ./openclaw_data; \
+	echo "Backup created: backup_openclaw_data_$$TIMESTAMP.tar.gz"
+
+# Remote deployment helper
+run-remote:
+	docker compose -f docker-compose.remote.yml up -d
