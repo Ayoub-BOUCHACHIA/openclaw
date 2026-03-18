@@ -17,9 +17,5 @@
         "primary": "moonshot/kimi-k2.5"
       }
     }
-  },
-  "meta": {
-    "profile": "kimi-dev",
-    "description": "Optimized for development & debugging with native commands enabled."
   }
 }

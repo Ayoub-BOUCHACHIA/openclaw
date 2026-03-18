@@ -17,9 +17,5 @@
         "primary": "google/gemini-2.0-flash-001"
       }
     }
-  },
-  "meta": {
-    "profile": "gemini",
-    "description": "Free-tier profile using Google Gemini (AI Studio)."
   }
 }
