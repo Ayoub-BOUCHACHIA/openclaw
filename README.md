@@ -38,6 +38,7 @@ We provide pre-optimized templates for different use cases. To use one, copy it 
 | **Chat Assistant** | `openclaw.json.kimi-chat.template` | Safe, general-purpose chat focus (Kimi). |
 | **Browser Runner** | `openclaw.json.kimi-browser.template` | Optimized for web research (Kimi). |
 | **OpenRouter** | `openclaw.json.openrouter.template` | Multi-model support via OpenRouter (Gemini, etc.). |
+| **Gemini (Free)** | `openclaw.json.gemini.template` | Cost-free testing using Google AI Studio. |
 
 ---
 
