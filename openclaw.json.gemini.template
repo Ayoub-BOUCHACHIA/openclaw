@@ -14,7 +14,15 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openrouter/google/gemini-2.0-flash-exp:free"
+        "primary": "openrouter/arcee-ai/trinity-mini:free",
+        "fallbacks": [
+          "openrouter/arcee-ai/trinity-mini:free",
+          "openrouter/openrouter/free",
+          "openrouter/nvidia/nemotron-nano-12b-v2-vl:free",
+          "openrouter/openrouter/healer-alpha",
+          "openrouter/stepfun/step-3.5-flash:free",
+          "openrouter/nvidia/nemotron-3-super-120b-a12b:free"
+        ]
       }
     }
   }
