@@ -23,7 +23,18 @@ clean:
 setup:
 	@echo "Initializing project structure..."
 	mkdir -p ./openclaw_data
+	@if [ ! -f .env ]; then \
+		cp .env.template .env; \
+		echo "Created .env from template. Please edit it with your API keys."; \
+	fi
 	@if [ ! -f ./openclaw_data/openclaw.json ]; then \
 		cp openclaw.json.template ./openclaw_data/openclaw.json; \
 		echo "Created default openclaw.json from template."; \
 	fi
+
+update:
+	docker compose pull
+	docker compose up -d
+
+logs-live:
+	docker compose logs -f --tail 100

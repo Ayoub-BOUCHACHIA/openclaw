@@ -5,9 +5,16 @@ services:
     restart: unless-stopped
     network_mode: host
     environment:
-      MOONSHOT_API_KEY: "your-moonshot-api-key-here"
-      OPENCLAW_BYPASS_AUTH: "true"   # Set to "true" if you don't want token auth
-      NODE_TLS_REJECT_UNAUTHORIZED: "0"
+      MOONSHOT_API_KEY: ${MOONSHOT_API_KEY}
+      OPENCLAW_BYPASS_AUTH: ${OPENCLAW_BYPASS_AUTH:-true}
+      NODE_TLS_REJECT_UNAUTHORIZED: ${NODE_TLS_REJECT_UNAUTHORIZED:-1}
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:18791"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     
     volumes:
       - ./openclaw_data:/home/node/.openclaw

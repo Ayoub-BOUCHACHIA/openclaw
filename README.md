@@ -15,8 +15,12 @@ This repository contains a pre-configured OpenClaw setup ready for development. 
    cd openclaw
    ```
 
-2. **Set up your API Key:**
-   Create or edit the `docker-compose.yml` file and provide your `MOONSHOT_API_KEY`.
+2. **Set up your environment:**
+   Run the setup command to create your `.env` file from the template:
+   ```bash
+   make setup
+   ```
+   Open the `.env` file and provide your `MOONSHOT_API_KEY`.
 
 3. **Start the application:**
    Using the provided `Makefile`:
